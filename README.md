@@ -1,5 +1,7 @@
 # Izenda Docker Images
 
+Credit to Corey Robinson and Triet Pham for the base Izenda Docker script to be released soon
+
 ## Prerequisites
 
 You need to install [Docker for Windows](https://store.docker.com/editions/community/docker-ce-desktop-windows) and [switch to Windows containers](https://docs.docker.com/docker-for-windows/#switch-between-windows-and-linux-containers)
