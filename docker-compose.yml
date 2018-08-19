@@ -1,0 +1,37 @@
+version: '2.3'
+services:
+  web:
+    build: ./izenda-ui
+    ports:
+      - "3000:3000"
+    networks:
+      dock_net:
+        ipv4_address: 172.100.0.5
+    depends_on:
+      - api
+      - mssql
+  api:
+    build: ./izenda-api
+    ports:
+      - "3001:3001"
+    volumes:
+      - ./izenda-api/logs:C:/inetpub/wwwroot/API/logs
+    networks:
+      dock_net:
+        ipv4_address: 172.100.0.3
+  mssql:
+    build: ./izenda-mssql
+    ports:
+      - "1433:1433"
+    volumes:
+      - ./izenda-mssql/data:C:/DATA
+    networks:
+      dock_net:
+        ipv4_address: 172.100.0.4
+networks:
+  dock_net:
+    ipam:
+      driver: default
+      config:
+       - subnet: 172.100.0.0/24
+         gateway: 172.100.0.1
